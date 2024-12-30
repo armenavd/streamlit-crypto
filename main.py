@@ -1,3 +1,5 @@
+import plotly.graph_objects as go
+import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
 from utils.api import get_crypto_list, get_crypto_price, get_crypto_history, get_crypto_fees, get_crypto_blockchains
@@ -6,21 +8,25 @@ from utils.translations import get_translations
 from utils.visualization import create_comparison_chart, display_crypto_prices
 from utils.chatbot import chatbot
 
-st.title("Cryptocurrency Dashboard and Tax Calculator")
+# Custom Top Navbar
+col1, col2 = st.columns([3, 1])
+with col1:
+    st.title("Cryptocurrency Dashboard and Tax Calculator")
 
-# Navbar: Language and Navigation
-selected_nav = option_menu(
-    menu_title=None,  # Title for the menu (None to hide)
-    options=["Prices", "Tax Calculator", "Historic"],  # Navigation tabs
-    icons=["currency-bitcoin", "calculator", "bar-chart"],  # Optional: Add icons for tabs
-    menu_icon="cast",  # Icon for the menu
-    default_index=0,  # Default active tab
-    orientation="horizontal",  # Display the menu horizontally
-)
+with col2:
+    # Language dropdown in the top-right
+    language = st.selectbox(
+        "Language / Langue",
+        ["English", "Français"],
+        key="language_select"
+    )
 
-# Language selection (dropdown in the navbar)
-language = st.selectbox("Select Language / Sélectionnez la langue", ["English", "Français"], key="language_select")
-labels = get_translations(language)
+# Update language in session state if it changes
+if "language" not in st.session_state or language != st.session_state.language:
+    st.session_state.language = language
+
+# Load translations based on the selected language
+labels = get_translations(st.session_state.language)
 
 # Define global time ranges for all tabs
 time_ranges = {
@@ -36,9 +42,19 @@ time_ranges = {
 if "app_context" not in st.session_state:
     st.session_state.app_context = {}
 
+# Navbar Menu
+selected_nav = option_menu(
+    menu_title=None,  # Title for the menu (None to hide)
+    options=["Prices", "Tax Calculator", "Historic"],  # Navigation tabs
+    icons=["currency-bitcoin", "calculator", "bar-chart"],  # Optional: Add icons for tabs
+    menu_icon="cast",  # Icon for the menu
+    default_index=0,  # Default active tab
+    orientation="horizontal",  # Display the menu horizontally
+)
+
 # Display the selected tab
 if selected_nav == "Prices":
-    st.header("Prices Tab")
+    st.header(labels["prices"])
     st.session_state.app_context["tab"] = "prices"
 
     # Fetch cryptos
@@ -71,7 +87,7 @@ if selected_nav == "Prices":
         st.warning(labels["crypto_selection"])
 
 elif selected_nav == "Tax Calculator":
-    st.header("Tax Calculator Tab")
+    st.header(labels["tax_calculator"])
     st.session_state.app_context["tab"] = "tax_calculator"
 
     # Inputs for tax calculation
@@ -100,7 +116,7 @@ elif selected_nav == "Tax Calculator":
         })
 
 elif selected_nav == "Historic":
-    st.header("Historic Data Tab")
+    st.header(labels["historic"])
     st.session_state.app_context["tab"] = "historic"
 
     # Inputs for historic data

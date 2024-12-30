@@ -1,26 +1,24 @@
 # Cryptocurrency Dashboard and Tax Calculator
 
+## Description
+
 This project is a Streamlit-based web application for tracking cryptocurrency prices, calculating taxes on cryptocurrency transactions, and exploring historic data. It also includes an integrated chatbot for assistance.
+
+- **Monitor Cryptocurrency Prices**: Visualize real-time and historical data for multiple cryptocurrencies.
+- **Calculate Taxes on Crypto Trades**: Calculate gains, losses, and applicable taxes on crypto transactions.
+- **Analyze Historical Data**: View and analyze historical price trends for cryptocurrencies.
+- **Chatbot Integration**: Interact with an integrated chatbot for assistance.
 
 ## Features
 
-### 1. **Prices Tab**
-- View real-time cryptocurrency prices.
-- Select multiple cryptocurrencies to compare.
-- Visualize historic trends with interactive charts.
+- **Multi-language Support**: English and French.
+- **Custom Visualizations**: Compare cryptocurrency prices using dynamic and interactive charts.
+- **Cryptocurrency Tax Calculator**: Input transaction details to compute gains, losses, and tax liabilities.
+- **Integrated Chatbot**: Get answers to your questions directly within the application.
 
-### 2. **Tax Calculator Tab**
-- Calculate taxes on cryptocurrency transactions.
-- Input details like buy price, sell price, quantity, and fees.
-- Get total gains/losses and tax amounts.
+![Dashboard Preview](images/dashboard.png)
 
-### 3. **Historic Data Tab**
-- Fetch and display historic price data for selected cryptocurrencies.
-
-### 4. **Chatbot Integration**
-- Interact with a chatbot powered by OpenAI for assistance.
-
-## Setup and Installation
+## Installation
 
 ### Prerequisites
 - Python 3.9 or higher
@@ -28,73 +26,84 @@ This project is a Streamlit-based web application for tracking cryptocurrency pr
   - [CoinGecko API](https://www.coingecko.com/en/api)
   - [OpenAI API](https://openai.com/api/)
 
-### Installation Steps
+### Clone the Repository
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/cryptocurrency-dashboard.git
-   cd cryptocurrency-dashboard
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Set up environment variables:
-   - Create a `.streamlit/secrets.toml` file.
-   - Add your API keys:
-     ```toml
-     [secrets]
-     COINGECKO_API_KEY = "your_coingecko_api_key"
-     OPENAI_API_KEY = "your_openai_api_key"
-     ```
-
-4. Run the application:
-   ```bash
-   streamlit run main.py
-   ```
-
-## Project Structure
-
+```bash
+$ git clone <repository_url>
+$ cd <repository_folder>
 ```
-.
-├── main.py                   # Main application script
-├── requirements.txt          # Python dependencies
-├── utils/
-│   ├── api.py                # API-related utility functions
-│   ├── calculations.py       # Tax calculation logic
-│   ├── chatbot.py            # Chatbot integration
-│   ├── translations.py       # Language translations
-│   ├── visualization.py      # Visualization and charting functions
-└── .streamlit/
-    └── secrets.toml          # API secrets (not included in version control)
+
+### Install Dependencies
+
+Create and activate a virtual environment (optional but recommended):
+
+```bash
+$ python -m venv venv
+$ source venv/bin/activate # On Windows: venv\Scripts\activate
+```
+
+Install the required packages:
+
+```bash
+$ pip install -r requirements.txt
+```
+
+### Configure Secrets
+
+Create a `.streamlit/secrets.toml` file and add your API keys:
+
+```toml
+COINGECKO_API_KEY = "your_coingecko_api_key"
+OPENAI_API_KEY = "your_openai_api_key"
 ```
 
 ## Usage
 
-1. **Prices Tab**:
-   - Select cryptocurrencies and a time range.
-   - View interactive charts and detailed price, fee, and blockchain information.
+Run the application locally:
 
-2. **Tax Calculator Tab**:
-   - Enter transaction details to calculate taxes.
+```bash
+$ streamlit run main.py
+```
 
-3. **Historic Data Tab**:
-   - Select a cryptocurrency and time range to view historic price data.
+### Navigate the Application
 
-4. **Chatbot**:
-   - Use the chatbot for help or guidance on cryptocurrency-related queries.
+1. **Prices Tab**: Monitor real-time prices and blockchain data.
+2. **Tax Calculator Tab**: Calculate cryptocurrency trade taxes.
+3. **Historic Tab**: Analyze historical cryptocurrency price data.
 
-## Dependencies
+### Language Selection
 
-- [Streamlit](https://streamlit.io/)
-- [Plotly](https://plotly.com/)
-- [Streamlit Option Menu](https://github.com/victoryhb/streamlit-option-menu)
-- [OpenAI API](https://openai.com/api/)
+Choose between English and French from the dropdown menu in the top-right corner.
 
-## Future Improvements
+## File Structure
 
-- Add more advanced analytics for cryptocurrencies.
-- Include support for additional APIs.
-- Enhance chatbot capabilities.
+```plaintext
+project-folder/
+├── main.py                # Main Streamlit app
+├── utils/                 # Utility modules
+│   ├── api.py            # API calls and data fetching
+│   ├── calculations.py   # Tax calculation logic
+│   ├── chatbot.py        # Chatbot functionality
+│   ├── translations.py   # Language translations
+│   └── visualization.py  # Visualization utilities
+├── images/                # Images for README and app
+│   └── dashboard.png     # Screenshot of the dashboard
+├── requirements.txt       # Dependencies
+└── .streamlit/            # Streamlit configuration files
+    └── secrets.toml       # API keys (not included in the repo)
+```
+
+## Development Notes
+
+- **Data Caching**: Utilizes `st.cache_data` for efficient API calls and improved performance.
+- **Secrets Management**: All sensitive data like API keys are stored in `.streamlit/secrets.toml`.
+- **Extensibility**: Add more features, languages, or integrations as needed.
+
+## Requirements
+
+The application depends on the following Python libraries:
+
+- `plotly`
+- `streamlit`
+- `streamlit-option-menu`
+- `openai`
