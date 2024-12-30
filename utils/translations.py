@@ -1,0 +1,53 @@
+def get_translations(language):
+    if language == "Français":
+        return {
+            "tabs": ["Prix des Cryptos", "Calculateur de Taxes Crypto", "Données Historiques"],
+            "prices": "Prix des Cryptos",
+            "tax_calculator": "Calculateur de Taxes Crypto",
+            "historic": "Données Historiques",
+            "crypto_selection": "Choisissez des cryptomonnaies :",
+            "show_prices": "Afficher les prix",
+            "select_crypto_history": "Choisissez une cryptomonnaie pour les données historiques :",
+            "time_range": "Sélectionnez une plage de temps :",
+            "compare_cryptos": "Comparer les cryptos",
+            "tax_calc_header": "Calculateur de Taxes sur les Cryptos",
+            "tax_explanation": "### Comment les calculs sont effectués :",
+            "tax_gain_loss": "**Gains/Pertes Totaux**",
+            "tax_amount": "**Taxes à payer**",
+            "buy_price": "Prix d'achat par unité (USD) :",
+            "sell_price": "Prix de vente par unité (USD) :",
+            "quantity": "Quantité (en unités) :",
+            "fees": "Frais totaux (USD) :",
+            "tax_rate": "Taux d'imposition (%) :",
+            "calculate_tax": "Calculer les taxes sur les cryptos",
+            "loading_message": "Chargement de la liste des cryptomonnaies...",
+            "error_message": "Impossible de récupérer les données.",
+            "historic_data_header": "Données Historiques de la Cryptomonnaie",
+            "show_historic": "Afficher les données historiques"
+        }
+    else:
+        return {
+            "tabs": ["Crypto Prices", "Crypto Tax Calculator", "Historic Data"],
+            "prices": "Crypto Prices",
+            "tax_calculator": "Crypto Tax Calculator",
+            "historic": "Historic Data",
+            "crypto_selection": "Select cryptocurrencies:",
+            "show_prices": "Show Prices",
+            "select_crypto_history": "Select a cryptocurrency for historic data:",
+            "time_range": "Select a time range:",
+            "compare_cryptos": "Compare Cryptos",
+            "tax_calc_header": "Crypto Tax Calculator",
+            "tax_explanation": "### How the calculations are performed:",
+            "tax_gain_loss": "**Total Gain/Loss**",
+            "tax_amount": "**Tax to Pay**",
+            "buy_price": "Buy Price per Unit (USD):",
+            "sell_price": "Sell Price per Unit (USD):",
+            "quantity": "Quantity (in units):",
+            "fees": "Total Fees (USD):",
+            "tax_rate": "Tax Rate (%):",
+            "calculate_tax": "Calculate Crypto Taxes",
+            "loading_message": "Loading cryptocurrency list...",
+            "error_message": "Failed to fetch data.",
+            "historic_data_header": "Historic Data of Cryptocurrency",
+            "show_historic": "Show Historic Data"
+        }
